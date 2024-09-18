@@ -28,6 +28,7 @@ public class CargaDeDadosUtil {
         entityManager.flush();
         entityManager.clear();
     }
+
     public static void cadastrarProdutosCardapio(EntityManager entityManager){
         CategoriaDao categoriaDao = new CategoriaDao(entityManager);
         CardapioDao cardapioDao = new CardapioDao(entityManager);

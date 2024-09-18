@@ -5,17 +5,17 @@ import br.com.renato.restaurante.util.CargaDeDadosUtil;
 import br.com.renato.restaurante.util.JPAUtil;
 
 import javax.persistence.EntityManager;
-import java.math.BigDecimal;
 
 public class CardapioService {
     public static void main(String[] args) {
-        EntityManager entityManager= JPAUtil.getEntityManagerRCfood();
+        EntityManager entityManager = JPAUtil.getEntityManagerRCfood();
         entityManager.getTransaction().begin();
+
         CargaDeDadosUtil.cadastrarCategorias(entityManager);
         CargaDeDadosUtil.cadastrarProdutosCardapio(entityManager);
+
         CardapioDao cardapioDao = new CardapioDao(entityManager);
-        System.out.println("Lista de produtos por valor: " +
-                cardapioDao.consultarPorValor(BigDecimal.valueOf(59.00)));
+        System.out.println("O produto pesquisado foi: " + cardapioDao.consultarPorNome("moqueca"));
         entityManager.close();
     }
 }
